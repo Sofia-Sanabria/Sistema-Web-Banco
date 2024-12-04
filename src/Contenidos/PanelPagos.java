@@ -1,0 +1,307 @@
+package Contenidos;
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import static java.awt.image.ImageObserver.WIDTH;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author MAN-U
+ */
+public class PanelPagos extends javax.swing.JPanel implements Interface_Panel {
+
+    /**
+     * Creates new form PagarServicios
+     */
+    public PanelPagos() {
+        initComponents();
+        changeComponentsProperties();
+    }
+
+    /**
+     * Método que cambia el color y la transparencia del jPanel. 
+     */
+    @Override
+    public final void changeComponentsProperties(){
+        this.setBackground(new Color(0, 0, 0, 0));
+    }
+    
+    /**
+     * Llama al método desplegarX para desplegar de manera horizontal cada uno de los 
+     * componentes contenidos en el jPanel
+     */
+    @Override
+    public void desplegarComponentes(){
+        desplegarX(jLabelTituloPagoServicios, 290,1);
+        desplegarX(jPanelPagoDeServicios, 290,1);
+        desplegarX(jLabelCodigoServicio, 290,1);
+        desplegarX(jTextCodigoServicio, 290,1);
+        desplegarX(jLabelMontoAPagarServicio, 290,1);
+        desplegarX(jTextMontoAPagarServicio, 290,1);
+        desplegarX(jLabelTituloPagoServicios, 290,1);
+        desplegarX(jLabelTarjetasPagoServicio, 290,1);
+        desplegarX(jComboBoxTarjetasPagoServicio, 290,1);
+        desplegarX(jTextPINTransaccion, 290, 1);
+        desplegarX(jButtonConfirmarPagoServicio, 290, 1);
+    }
+    
+    /**
+     * Llama al método plegarX para plegar de manera horizontal cada uno de los 
+     * componentes contenidos en el jPanel
+     */
+    @Override
+    public void plegarComponentes(){
+        plegarX(jLabelTituloPagoServicios, 290,1);
+        plegarX(jPanelPagoDeServicios, 290,1);
+        plegarX(jLabelCodigoServicio, 290,1);
+        plegarX(jTextCodigoServicio, 290,1);
+        plegarX(jLabelMontoAPagarServicio, 290,1);
+        plegarX(jTextMontoAPagarServicio, 290,1);
+        plegarX(jLabelTituloPagoServicios, 290,1);
+        plegarX(jLabelTarjetasPagoServicio, 290,1);
+        plegarX(jComboBoxTarjetasPagoServicio, 290,1);
+        plegarX(jTextPINTransaccion, 290, 1);
+        plegarX(jButtonConfirmarPagoServicio, 290, 1);
+    }
+    
+    /**
+     * Método que cambia la dimensión de un Component simulando su despliegue en pantalla
+     * @param jcomponent      Component a ser desplegado
+     * @param totalDesplegarX Parámetro tipo int que determina cuanto se sumará a la anchura
+     * actual del JPanel
+     * @param time            Milisegundos para simular los intervalos de la animación
+     */
+    @Override
+    public void desplegarX(Component jcomponent, int totalDesplegarX, int time){
+        Thread hiloDesplegar = new Thread() { //declara un nuevo hilo
+            @Override
+            public void run(){
+                int anchuraActual = jcomponent.getWidth();
+                //ciclo en donde se redimensiona el widget
+                for(int desplegarX = anchuraActual; desplegarX <= anchuraActual+totalDesplegarX; desplegarX++){
+                    try {
+                        Thread.sleep(time);
+                        jcomponent.setSize(new Dimension(desplegarX, jcomponent.getHeight())); //redimensiona el JPanel
+                    } catch (InterruptedException ex) {
+                        System.err.print("No se pudo desplegar el Component");
+                    }
+                }
+            }
+        }; hiloDesplegar.start();
+    }
+    
+    
+    /**
+     * Método que cambia la dimensión de un Component simulando su plegado
+     * @param jcomponent   Component a ser plegado
+     * @param totalPlegarX Parámetro tipo int que determina cuanto se restará a la anchura
+     * actual del JPanel
+     * @param time   Milisegundos para simular los intervalos de la animación
+     */
+    @Override
+    public void plegarX(Component jcomponent, int totalPlegarX, int time){
+        Thread hiloPlegar = new Thread() { //declara un nuevo hilo
+            @Override
+            public void run(){ 
+                int anchuraActual = jcomponent.getWidth();
+                //ciclo en donde se disminuye la dimensión del JPanel de uno en uno
+                for(int plegarX = anchuraActual; plegarX >= anchuraActual-totalPlegarX; plegarX--){ 
+                    //captura la excepción InterruptedException generada por .sleep()
+                    try {
+                        Thread.sleep(time);
+                        jcomponent.setSize(new Dimension(plegarX, jcomponent.getHeight())); //redimensiona el JPanel
+                    } catch (InterruptedException ex) {
+                        System.err.print("No se pudo plegar el Component");
+                    }
+                }
+            }
+        }; hiloPlegar.start(); //comienza el hilo
+    }
+    
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanelPagoDeServicios = new javax.swing.JPanel();
+        jLabelTituloPagoServicios = new javax.swing.JLabel();
+        jLabelCodigoServicio = new javax.swing.JLabel();
+        jLabelMontoAPagarServicio = new javax.swing.JLabel();
+        jTextCodigoServicio = new javax.swing.JTextField();
+        jTextMontoAPagarServicio = new javax.swing.JTextField();
+        jButtonConfirmarPagoServicio = new javax.swing.JButton();
+        jComboBoxTarjetasPagoServicio = new javax.swing.JComboBox<>();
+        jLabelTarjetasPagoServicio = new javax.swing.JLabel();
+        jLabelIngresarPIN = new javax.swing.JLabel();
+        jTextPINTransaccion = new javax.swing.JTextField();
+
+        setBackground(new java.awt.Color(204, 255, 204));
+
+        jPanelPagoDeServicios.setBackground(new java.awt.Color(68, 114, 196));
+
+        jLabelTituloPagoServicios.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelTituloPagoServicios.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTituloPagoServicios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTituloPagoServicios.setText("PAGO DE SERVICIOS");
+
+        jLabelCodigoServicio.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelCodigoServicio.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelCodigoServicio.setText("Codigo de Servicio");
+
+        jLabelMontoAPagarServicio.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelMontoAPagarServicio.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelMontoAPagarServicio.setText("Monto a Pagar");
+
+        jTextCodigoServicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextCodigoServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextCodigoServicioActionPerformed(evt);
+            }
+        });
+
+        jTextMontoAPagarServicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextMontoAPagarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextMontoAPagarServicioActionPerformed(evt);
+            }
+        });
+
+        jButtonConfirmarPagoServicio.setBackground(new java.awt.Color(0, 15, 102));
+        jButtonConfirmarPagoServicio.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jButtonConfirmarPagoServicio.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonConfirmarPagoServicio.setText("Confirmar Pago");
+        jButtonConfirmarPagoServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConfirmarPagoServicioActionPerformed(evt);
+            }
+        });
+
+        jComboBoxTarjetasPagoServicio.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jComboBoxTarjetasPagoServicio.setForeground(new java.awt.Color(102, 102, 102));
+        jComboBoxTarjetasPagoServicio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Transferencia", "Tarjeta 1", "Tarjeta 2", "Tarjeta 3", "Tarjeta 4" }));
+
+        jLabelTarjetasPagoServicio.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelTarjetasPagoServicio.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelTarjetasPagoServicio.setText("Metodo de Pago");
+
+        jLabelIngresarPIN.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jLabelIngresarPIN.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelIngresarPIN.setText("Ingresar PIN de Transaccion");
+
+        jTextPINTransaccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextPINTransaccion.setForeground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanelPagoDeServiciosLayout = new javax.swing.GroupLayout(jPanelPagoDeServicios);
+        jPanelPagoDeServicios.setLayout(jPanelPagoDeServiciosLayout);
+        jPanelPagoDeServiciosLayout.setHorizontalGroup(
+            jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPagoDeServiciosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelPagoDeServiciosLayout.createSequentialGroup()
+                        .addComponent(jLabelTituloPagoServicios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPagoDeServiciosLayout.createSequentialGroup()
+                        .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanelPagoDeServiciosLayout.createSequentialGroup()
+                                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelPagoDeServiciosLayout.createSequentialGroup()
+                                        .addComponent(jLabelCodigoServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(22, 22, 22))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPagoDeServiciosLayout.createSequentialGroup()
+                                        .addComponent(jLabelTarjetasPagoServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGap(18, 18, 18)))
+                                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jComboBoxTarjetasPagoServicio, 0, 230, Short.MAX_VALUE)
+                                    .addComponent(jTextCodigoServicio)))
+                            .addGroup(jPanelPagoDeServiciosLayout.createSequentialGroup()
+                                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelMontoAPagarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabelIngresarPIN))
+                                .addGap(22, 22, 22)
+                                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextPINTransaccion, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                                    .addComponent(jTextMontoAPagarServicio))))
+                        .addGap(20, 20, 20))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPagoDeServiciosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonConfirmarPagoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(240, 240, 240))
+        );
+        jPanelPagoDeServiciosLayout.setVerticalGroup(
+            jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPagoDeServiciosLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jLabelTituloPagoServicios, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextCodigoServicio)
+                    .addComponent(jLabelCodigoServicio, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelTarjetasPagoServicio, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                    .addComponent(jComboBoxTarjetasPagoServicio))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelMontoAPagarServicio, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                    .addComponent(jTextMontoAPagarServicio))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelPagoDeServiciosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabelIngresarPIN, javax.swing.GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+                    .addComponent(jTextPINTransaccion))
+                .addGap(18, 18, 18)
+                .addComponent(jButtonConfirmarPagoServicio, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(372, Short.MAX_VALUE)
+                .addComponent(jPanelPagoDeServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(355, 355, 355))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(162, 162, 162)
+                .addComponent(jPanelPagoDeServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(137, Short.MAX_VALUE))
+        );
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextCodigoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextCodigoServicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextCodigoServicioActionPerformed
+
+    private void jTextMontoAPagarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextMontoAPagarServicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextMontoAPagarServicioActionPerformed
+
+    private void jButtonConfirmarPagoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfirmarPagoServicioActionPerformed
+        JOptionPane.showConfirmDialog(this, "Esta seguro que quiere pagar este servicio?", "Confrimar Pago Servicio", WIDTH);
+    }//GEN-LAST:event_jButtonConfirmarPagoServicioActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConfirmarPagoServicio;
+    private javax.swing.JComboBox<String> jComboBoxTarjetasPagoServicio;
+    private javax.swing.JLabel jLabelCodigoServicio;
+    private javax.swing.JLabel jLabelIngresarPIN;
+    private javax.swing.JLabel jLabelMontoAPagarServicio;
+    private javax.swing.JLabel jLabelTarjetasPagoServicio;
+    private javax.swing.JLabel jLabelTituloPagoServicios;
+    private javax.swing.JPanel jPanelPagoDeServicios;
+    private javax.swing.JTextField jTextCodigoServicio;
+    private javax.swing.JTextField jTextMontoAPagarServicio;
+    private javax.swing.JTextField jTextPINTransaccion;
+    // End of variables declaration//GEN-END:variables
+}
